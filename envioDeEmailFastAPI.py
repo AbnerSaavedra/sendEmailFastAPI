@@ -14,28 +14,20 @@ app = FastAPI()
 class EmailSchema(BaseModel):
     email: List[EmailStr]
 
+    #JesusDevChrist7*
 
 conf = ConnectionConfig(
-    MAIL_USERNAME = "ingenieroabnersaavedra@gmail.com",
-    MAIL_PASSWORD = "DevChrist77*",
-    MAIL_FROM = "ingenieroabnersaavedra@gmail.com",
+    MAIL_USERNAME = "abnersaavedra777@gmail.com",
+    MAIL_PASSWORD = "qwuk uuif spgj zwzb",
+    MAIL_FROM = "abnersaavedra777@gmail.com",
     MAIL_PORT = 587,
     MAIL_SERVER = "smtp.gmail.com",
-    MAIL_FROM_NAME= "FastAPI",
+    MAIL_FROM_NAME="Desired Name",
     MAIL_STARTTLS = True,
     MAIL_SSL_TLS = False,
-    USE_CREDENTIALS = False,
-    VALIDATE_CERTS = False,
+    USE_CREDENTIALS = True,
+    VALIDATE_CERTS = True
 )
-
-'''conf = ConnectionConfig(
-   MAIL_USERNAME="ingenieroabnersaavedra@gmail.com",
-   MAIL_PASSWORD="DevChrist77*",
-   MAIL_PORT=587,
-   MAIL_SERVER="smtp.gmail.com",
-   MAIL_TLS=True,
-   MAIL_SSL=False,
-)'''
 
 app = FastAPI()
 
@@ -52,6 +44,7 @@ async def simple_send(email: EmailSchema) -> JSONResponse:
         subtype=MessageType.html)
 
     fm = FastMail(conf)
+    print("Fast mail: ", fm)
     await fm.send_message(message)
     return JSONResponse(status_code=200, content={"message": "email has been sent"})
 
